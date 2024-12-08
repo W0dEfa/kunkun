@@ -1,0 +1,55 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+#messageBoard {
+  width: 500px;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+#messageBoard h2 {
+  margin-top: 0;
+}
+
+form {
+  margin-top: 20px;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+ul li {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.container {
+  height: 200vh;
+  background-image: url(./img/ikun2.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}

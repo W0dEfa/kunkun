@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>留言板</title>
+    <link rel="stylesheet" href="./message.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div id="messageBoard">
+        <h2>留言板</h2>
+        <form id="messageForm">
+          <input type="text" id="name" placeholder="姓名" />
+          <textarea id="message" placeholder="留言内容"></textarea>
+          <button type="submit">提交留言</button>
+        </form>
+        <ul id="messages"></ul>
+      </div>
+    </div>
+    <script>
+      // 提交留言表单的处理函数
+      document
+        .getElementById("messageForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          var name = document.getElementById("name").value;
+          var message = document.getElementById("message").value;
+
+          if (name && message) {
+            var li = document.createElement("li");
+            li.innerHTML = `<strong>${name}:</strong> ${message}`;
+            document.getElementById("messages").appendChild(li);
+
+            // 保存留言到本地存储
+            var messages = JSON.parse(localStorage.getItem("messages")) || [];
+            messages.push({ name: name, message: message });
+            localStorage.setItem("messages", JSON.stringify(messages));
+
+            // 清空输入框
+            document.getElementById("name").value = "";
+            document.getElementById("message").value = "";
+          }
+        });
+
+      // 在页面加载时，从本地存储中获取留言并显示
+      window.addEventListener("load", function () {
+        var messages = JSON.parse(localStorage.getItem("messages")) || [];
+        for (var i = 0; i < messages.length; i++) {
+          var li = document.createElement("li");
+          li.innerHTML = `<strong>${messages[i].name}:</strong> ${messages[i].message}`;
+          document.getElementById("messages").appendChild(li);
+        }
+      });
+    </script>
+  </body>
+</html>
